@@ -24,5 +24,19 @@
     `include "gl/user_proj.v"
 `else
     `include "user_project_wrapper.v"
-    `include "user_proj/top.v"
+    `include "openlate_test/soc.v"
+    `include "openlate_test/user_proj.v"
+    `include "openlate_test/arbiter.v"
+    `include "openlate_test/fifo.v"
+    `include "openlate_test/rgb_led_wb.v"
+    `include "openlate_test/timer_wb.v"
+    `include "openlate_test/uart_rx.v"
+    `include "openlate_test/uart_tx.v"
+    `include "openlate_test/uart_wb.v"
+    `include "openlate_test/vexriscv.v"
+    `include "openlate_test/wb_arbiter.v"
+    `include "openlate_test/wb_interconnect.v"
+    `include "openlate_test/wb_mux.v"
+    `include "openlate_test/wb_ram.v"
+
 `endif
