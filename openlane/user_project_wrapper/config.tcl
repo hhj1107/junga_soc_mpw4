@@ -61,31 +61,37 @@ set ::env(FILL_INSERTION) 0
 # disable pdn check nodes becuase it hangs with multiple power domains.
 # any issue with pdn connections will be flagged with LVS so it is not a critical check.
 set ::env(FP_PDN_CHECK_NODES) 0
+set ::env(FP_SIZING) absolute
 set ::env(FP_PDN_ENABLE_RAILS) 0
 set ::env(FP_PDN_MACRO_HOOKS) "mprj vccd1 vssd1"
 
 set ::env(GLB_RT_MAXLAYER) 5
+set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
+#set ::env(GLB_RT_ADJUSTMENT) 0.30
 
 ### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
+#set ::env(PL_TARGET_DENSITY) 0.2
 set ::env(PL_RANDOM_GLB_PLACEMENT) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_BUFFER_INPUT_PORTS) 0
 set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 
-set ::env(QUIT_ON_LVS_ERROR) "0"
-set ::env(QUIT_ON_MAGIC_DRC) "0"
-set ::env(QUIT_ON_NEGATIVE_WNS) "0"
-set ::env(QUIT_ON_SLEW_VIOLATIONS) "0"
-set ::env(QUIT_ON_TIMING_VIOLATIONS) "0"
-set ::env(QUIT_ON_TR_DRC) "0"
+set ::env(QUIT_ON_HOLD_VIOLATIONS) 0
+set ::env(QUIT_ON_TIMING_VIOLATIONS) 0
+set ::env(QUIT_ON_MAGIC_DRC) 1
+set ::env(QUIT_ON_LVS_ERROR) 0
+set ::env(QUIT_ON_SLEW_VIOLATIONS) 0
+set ::env(QUIT_ON_NEGATIVE_WNS) 0
+set ::env(QUIT_ON_TR_DRC) 1
 
 set ::env(ROUTING_CORES) 8
 
 # The following is because there are no std cells in the example wrapper project.
 set ::env(SYNTH_TOP_LEVEL) 1
+#set ::env(SYNTH_MAX_FANOUT) 4
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
 
 set ::env(TAP_DECAP_INSERTION) 0
