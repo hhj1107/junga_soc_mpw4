@@ -53,10 +53,6 @@ set ::env(FP_PDN_CORE_RING) 0
 set ::env(FP_PDN_CHECK_NODES) 0
 set ::env(FP_SIZING) absolute
 
-# Maximum layer used for routing is metal 4.
-# This is because this macro will be inserted in a top level (user_project_wrapper) 
-# where the PDN is planned on metal 5. So, to avoid having shorts between routes
-# in this macro and the top level metal 5 stripes, we have to restrict routes to metal4.  
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(GLB_RT_ADJUSTMENT) 0.30

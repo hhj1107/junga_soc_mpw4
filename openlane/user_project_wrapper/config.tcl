@@ -72,7 +72,7 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 ### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
-#set ::env(PL_TARGET_DENSITY) 0.2
+set ::env(PL_TARGET_DENSITY) 0.4
 set ::env(PL_RANDOM_GLB_PLACEMENT) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
