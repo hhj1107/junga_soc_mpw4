@@ -24,27 +24,29 @@ set ::env(DESIGN_IS_CORE) 0
 ######################################################
 # User Configurations
 
+puts $TARGET_PATH
+
 set ::env(VERILOG_FILES) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/user_proj.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/soc.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/arbiter.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/fifo.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/rgb_led_wb.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/timer_wb.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/uart_rx.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/uart_tx.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/uart_wb.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/vexriscv.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/wb_arbiter.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/wb_interconnect.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/wb_mux.v \
-        $::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/wb_ram.v"
+	$::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/user_proj.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/soc.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/vexriscv.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/arbiter.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/fifo.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/wb_arbiter.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/wb_mux.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/wb_interconnect.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/simpleuart.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/mem_wb.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/sky130_sram_2kbyte_1rw1r_32x512_8.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/rgb_led_wb.v \
+        $::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/timer_wb.v"
 
 set ::env(CLOCK_PORT) "wb_clk_i"
 set ::env(CLOCK_PERIOD) 10
 
 set ::env(DIE_AREA) "0 0 2800 3500"
+#set ::env(DIE_AREA) "80 80 2840 3440"
 
 set ::env(DIODE_INSERTION_STRATEGY) 4 
 
@@ -55,7 +57,7 @@ set ::env(FP_SIZING) absolute
 
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
-set ::env(GLB_RT_ADJUSTMENT) 0.30
+set ::env(GLB_RT_ADJUSTMENT) 0.3
 
 set ::env(LEC_ENABLE) 0
 

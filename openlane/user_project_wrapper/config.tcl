@@ -36,12 +36,12 @@ set ::env(DESIGN_NAME) user_project_wrapper
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$::env(CARAVEL_ROOT)/../verilog/rtl/user_project_wrapper.v"
+	$::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/user_project_wrapper.v"
 
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
 	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
-	$::env(CARAVEL_ROOT)/../verilog/rtl/openlane_test/user_proj.v"
+	$::env(CARAVEL_ROOT)/verilog/rtl/openlane_test/user_proj.v"
 
 set ::env(EXTRA_LEFS) "\
 	$script_dir/../../lef/user_proj.lef"
@@ -61,7 +61,6 @@ set ::env(FILL_INSERTION) 0
 # disable pdn check nodes becuase it hangs with multiple power domains.
 # any issue with pdn connections will be flagged with LVS so it is not a critical check.
 set ::env(FP_PDN_CHECK_NODES) 0
-set ::env(FP_SIZING) absolute
 set ::env(FP_PDN_ENABLE_RAILS) 0
 set ::env(FP_PDN_MACRO_HOOKS) "mprj vccd1 vssd1"
 
