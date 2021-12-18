@@ -35,6 +35,6 @@
     `include "openlane_test/simpleuart.v"
     `include "openlane_test/mem_wb.v"
     `include "openlane_test/sky130_sram_2kbyte_1rw1r_32x512_8.v"
-    `include "openlane_test/rgb_led_wb.v"
+    `include "openlane_test/wb_led.v"
     `include "openlane_test/timer_wb.v"
 `endif

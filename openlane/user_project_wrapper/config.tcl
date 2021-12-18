@@ -49,6 +49,8 @@ set ::env(EXTRA_LEFS) "\
 set ::env(EXTRA_GDS_FILES) "\
 	$script_dir/../../gds/user_proj.gds"
 
+#set ::env(CELL_PAD) 4
+
 ## Clock configurations
 set ::env(CLOCK_PORT) "wb_clk_i"
 set ::env(CLOCK_PERIOD) 10
@@ -60,6 +62,8 @@ set ::env(FILL_INSERTION) 0
 
 # disable pdn check nodes becuase it hangs with multiple power domains.
 # any issue with pdn connections will be flagged with LVS so it is not a critical check.
+#if FP_SIZING is relative use FP_CORE_UTIL
+set ::env(FP_CORE_UTIL) 40
 set ::env(FP_PDN_CHECK_NODES) 0
 set ::env(FP_PDN_ENABLE_RAILS) 0
 set ::env(FP_PDN_MACRO_HOOKS) "mprj vccd1 vssd1"
@@ -71,7 +75,7 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 ### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
-set ::env(PL_TARGET_DENSITY) 0.4
+set ::env(PL_TARGET_DENSITY) [ expr ($::env(FP_CORE_UTIL)+5) / 100.0 ]
 set ::env(PL_RANDOM_GLB_PLACEMENT) 1
 set ::env(PL_RESIZER_DESIGN_OPTIMIZATIONS) 0
 set ::env(PL_RESIZER_TIMING_OPTIMIZATIONS) 0
