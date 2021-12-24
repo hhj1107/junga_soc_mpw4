@@ -291,7 +291,7 @@ Xmprj sram/dout0[0] sram/dout0[10] sram/dout0[11] sram/dout0[12] sram/dout0[13] 
 + sram/dout1[31] sram/dout1[3] sram/dout1[4] sram/dout1[5] sram/dout1[6] sram/dout1[7]
 + sram/dout1[8] sram/dout1[9] sram1/dout1[0] sram1/dout1[10] sram1/dout1[11] sram1/dout1[12]
 + sram1/dout1[13] sram1/dout1[14] sram1/dout1[15] sram1/dout1[16] sram1/dout1[17]
-+ sram1/dout1[18] sram1/dout1[19] sram1/dout1[1] sram1/dout1[20] sram1/dout1[21] sram1/dout1[22]
++ sram1/dout1[18] sram1/dout1[19] sram1/dout1[1] sram1/dout1[20] vdda2 sram1/dout1[22]
 + sram1/dout1[23] sram1/dout1[24] sram1/dout1[25] sram1/dout1[26] sram1/dout1[27]
 + sram1/dout1[28] sram1/dout1[29] sram1/dout1[2] sram1/dout1[30] sram1/dout1[31] sram1/dout1[3]
 + sram1/dout1[4] sram1/dout1[5] sram1/dout1[6] sram1/dout1[7] sram1/dout1[8] sram1/dout1[9]
@@ -374,7 +374,7 @@ Xmprj sram/dout0[0] sram/dout0[10] sram/dout0[11] sram/dout0[12] sram/dout0[13] 
 + la_oenb[88] la_oenb[89] la_oenb[8] la_oenb[90] la_oenb[91] la_oenb[92] la_oenb[93]
 + la_oenb[94] la_oenb[95] la_oenb[96] la_oenb[97] la_oenb[98] la_oenb[99] la_oenb[9]
 + sram/addr1[0] sram/addr1[1] sram/addr1[2] sram/addr1[3] sram/addr1[4] sram/addr1[5]
-+ sram/addr1[6] sram/addr1[7] sram/addr1[8] sram1/addr1[0] sram1/addr1[1] sram1/addr1[2]
++ sram/addr1[6] sram/addr1[7] sram/addr1[8] sram1/addr1[1] sram1/addr1[1] sram1/addr1[2]
 + sram1/addr1[3] sram1/addr1[4] sram1/addr1[5] sram1/addr1[6] sram1/addr1[7] sram1/addr1[8]
 + sram/csb0 sram1/csb0 sram/csb1 sram1/csb1 sram/din0[0] sram/din0[10] sram/din0[11]
 + sram/din0[12] sram/din0[13] sram/din0[14] sram/din0[15] sram/din0[16] sram/din0[17]
@@ -415,7 +415,7 @@ Xsram1 sram1/din0[0] sram1/din0[1] sram1/din0[2] sram1/din0[3] sram1/din0[4] sra
 + sram1/din0[18] sram1/din0[19] sram1/din0[20] sram1/din0[21] sram1/din0[22] sram1/din0[23]
 + sram1/din0[24] sram1/din0[25] sram1/din0[26] sram1/din0[27] sram1/din0[28] sram1/din0[29]
 + sram1/din0[30] sram1/din0[31] sram1/addr0[0] sram1/addr0[1] sram1/addr0[2] sram1/addr0[3]
-+ sram1/addr0[4] sram1/addr0[5] sram1/addr0[6] sram1/addr0[7] sram1/addr0[8] sram1/addr1[0]
++ sram1/addr0[4] sram1/addr0[5] sram1/addr0[6] sram1/addr0[7] sram1/addr0[8] sram1/addr1[1]
 + sram1/addr1[1] sram1/addr1[2] sram1/addr1[3] sram1/addr1[4] sram1/addr1[5] sram1/addr1[6]
 + sram1/addr1[7] sram1/addr1[8] sram1/csb0 sram1/csb1 sram1/web0 wb_clk_i wb_clk_i
 + sram1/wmask0[0] sram1/wmask0[1] sram1/wmask0[2] sram1/wmask0[3] sram1/dout0[0] sram1/dout0[1]
@@ -428,8 +428,8 @@ Xsram1 sram1/din0[0] sram1/din0[1] sram1/din0[2] sram1/din0[3] sram1/din0[4] sra
 + sram1/dout1[3] sram1/dout1[4] sram1/dout1[5] sram1/dout1[6] sram1/dout1[7] sram1/dout1[8]
 + sram1/dout1[9] sram1/dout1[10] sram1/dout1[11] sram1/dout1[12] sram1/dout1[13] sram1/dout1[14]
 + sram1/dout1[15] sram1/dout1[16] sram1/dout1[17] sram1/dout1[18] sram1/dout1[19]
-+ sram1/dout1[20] sram1/dout1[21] sram1/dout1[22] sram1/dout1[23] sram1/dout1[24]
-+ sram1/dout1[25] sram1/dout1[26] sram1/dout1[27] sram1/dout1[28] sram1/dout1[29]
-+ sram1/dout1[30] sram1/dout1[31] vccd1 vssd1 sky130_sram_2kbyte_1rw1r_32x512_8
++ sram1/dout1[20] vdda2 sram1/dout1[22] sram1/dout1[23] sram1/dout1[24] sram1/dout1[25]
++ sram1/dout1[26] sram1/dout1[27] sram1/dout1[28] sram1/dout1[29] sram1/dout1[30]
++ sram1/dout1[31] vccd1 vssd1 sky130_sram_2kbyte_1rw1r_32x512_8
 .ends
 

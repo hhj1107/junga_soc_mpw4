@@ -50,7 +50,6 @@ set ::env(EXTRA_LEFS) "\
 	$script_dir/../../lef/user_proj.lef \
 	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
 
-
 #set ::env(EXTRA_LEFS) "\
 	$script_dir/../user_proj/runs/user_proj/results/final/lef/user_proj.lef \
   $script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
@@ -66,9 +65,6 @@ set ::env(EXTRA_GDS_FILES) "\
 #set ::env(EXTRA_LIBS) "\
 	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
 
-#set ::env(CELL_PAD) 4
-
-## Clock configurations
 set ::env(CLOCK_PORT) "wb_clk_i"
 set ::env(CLOCK_PERIOD) 20
 set ::env(CLOCK_TREE_SYNTH) 0
@@ -77,9 +73,6 @@ set ::env(DIODE_INSERTION_STRATEGY) 0
 
 set ::env(FILL_INSERTION) 0
 
-# disable pdn check nodes becuase it hangs with multiple power domains.
-# any issue with pdn connections will be flagged with LVS so it is not a critical check.
-#if FP_SIZING is relative use FP_CORE_UTIL
 set ::env(FP_CORE_UTIL) 15
 set ::env(FP_PDN_CHECK_NODES) 0
 set ::env(FP_PDN_ENABLE_RAILS) 0
@@ -87,35 +80,17 @@ set ::env(FP_PDN_MACRO_HOOKS) " \
 	mprj vccd1 vssd1 \
 	sram vccd1 vssd1 \
 	sram1 vccd1 vssd1"
-#set ::env(FP_PDN_ENABLE_MACROS_GRID) 1
-#set ::env(FP_PDN_ENABLE_GLOBAL_CONNECTIONS) 1
-#set ::env(FP_PDN_IRDROP) 0
 
-#set ::env(GLB_RT_ALLOW_CONGESTION) 1
 set ::env(GLB_RT_MAXLAYER) 5
-#set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
-#set ::env(GLB_RT_ADJUSTMENT) 0.1
-#set ::env(GLB_RT_L2_ADJUSTMENT) 0.9
-#set ::env(GLB_RT_L3_ADJUSTMENT) 0.7
-#set ::env(GLB_RT_L4_ADJUSTMENT) 0.20
-#set ::env(GLB_RT_OBS)  " \
-  li1  0    0    2920   3520"
-#set ::env(GLB_RT_OBS)  " \
-  li1  0    0    2920   3520, \
-  met1 300  300  1800   1800, \
-  met2 300  300  1800   1800, \
-  met3 300  300  1800   1800, \
-  met4 300  300  1800   1800, \
-  met5 300  300  1800   1800"
 set ::env(GLB_RT_OBS) " \
-  li1  0    0    2920   3520, \
-  met1 300  300  1300   1300, \
+  met1 300  300  1200   1200, \
   met1 300  2100 983.1  2516.54, \
-  met1 1100 2100 1783.1 2516.54"
+  met3 300  2100 983.1  2516.54, \
+  met1 1100 2100 1783.1 2516.54, \
+  met3 1100 2100 1783.1 2516.54"
 
 #set ::env(KLAYOUT_XOR_GDS) 0
 
-### Macro Placement
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
 set ::env(MAGIC_DRC_USE_GDS) 0
@@ -136,17 +111,13 @@ set ::env(QUIT_ON_LVS_ERROR) 0
 set ::env(QUIT_ON_NEGATIVE_WNS) 0
 
 set ::env(ROUTING_CORES) 8
-#set ::env(ROUTING_OPT_ITERS) 8
 
 set ::env(RT_MAX_LAYER) "met4"
 
 set ::env(RUN_KLAYOUT_DRC) 0
 set ::env(RUN_MAGIC_DRC) 0
 
-# The following is because there are no std cells in the example wrapper project.
 set ::env(SYNTH_TOP_LEVEL) 1
-#set ::env(SYNTH_MAX_FANOUT) 4
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
-#set ::env(SYNTH_DRIVING_CELL) "sky130_fd_sc_hd__inv_8"
 
 set ::env(TAP_DECAP_INSERTION) 0
