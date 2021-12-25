@@ -1,7 +1,7 @@
 magic
 tech sky130A
 magscale 1 2
-timestamp 1640406998
+timestamp 1640408431
 << locali >>
 rect 289829 480199 289863 480709
 rect 291853 480267 291887 480641
@@ -66197,15 +66197,15 @@ rect 592298 -7622 592382 -7386
 rect 592618 -7622 592650 -7386
 rect -8726 -7654 592650 -7622
 use sky130_sram_2kbyte_1rw1r_32x512_8  sram1
-timestamp 1640406998
+timestamp 1640408431
 transform 1 0 60000 0 1 500000
 box 0 0 136620 83308
 use sky130_sram_2kbyte_1rw1r_32x512_8  sram
-timestamp 1640406998
+timestamp 1640408431
 transform 1 0 60000 0 1 200000
 box 0 0 136620 83308
 use user_proj  mprj
-timestamp 1640406998
+timestamp 1640408431
 transform 1 0 260000 0 1 300000
 box 0 0 164377 166521
 << labels >>
