@@ -54,12 +54,12 @@ module user_proj #(
     input [31:0] wbs_adr_i,
     output wbs_ack_o,
     output [31:0] wbs_dat_o,
-//*
+/*
     // Logic Analyzer Signals
     input  [127:0] la_data_in,
     output [127:0] la_data_out,
     input  [127:0] la_oenb,
-//*/
+*/
     // IOs
     input  [`MPRJ_IO_PADS-1:0] io_in,
     output [`MPRJ_IO_PADS-1:0] io_out,
@@ -93,10 +93,10 @@ module user_proj #(
 
 //assign io_oeb = 0;
 //assign io_out = 0;
-
+/*
 assign la_oenb = 128'b0;
 assign la_data_out = 128'b0;
-
+*/
 assign irq = 3'b0;
 
 wire ser_rx;

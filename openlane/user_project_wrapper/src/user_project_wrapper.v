@@ -82,10 +82,10 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-/*
+//*
 assign la_oenb = 128'b0;
 assign la_data_out = 128'b0;
-*/
+//*/
 
 wire o_csb0;
 wire o_web0;
@@ -161,12 +161,12 @@ user_proj mprj (
     .wbs_dat_i(wbs_dat_i),
     .wbs_ack_o(wbs_ack_o),
     .wbs_dat_o(wbs_dat_o),
-//*
+/*
     // Logic Analyzer
     .la_data_in(la_data_in),
     .la_data_out(la_data_out),
     .la_oenb (la_oenb),
-//*/
+*/
     // IO Pads
     .io_in(io_in),
     .io_out(io_out),
