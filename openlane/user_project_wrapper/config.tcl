@@ -83,13 +83,12 @@ set ::env(FP_PDN_MACRO_HOOKS) " \
 
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_OBS) " \
-  met2 300  1000 983.1 1416.54, \
-  met3 300  1000 983.1 1416.54, \
-  met4 300  1000 983.1 1416.54, \
-  met2 300  2500 983.1 2916.54, \
-  met3 300  2500 983.1 2916.54, \
-  met4 300  2500 983.1 2916.54"
-
+  met2 300  2100 983.1  2516.54, \
+  met3 300  2100 983.1  2516.54, \
+  met4 300  2100 983.1  2516.54, \
+  met2 1100 2100 1783.1 2516.54, \
+  met3 1100 2100 1783.1 2516.54, \
+  met4 1100 2100 1783.1 2516.54"
 #set ::env(KLAYOUT_XOR_GDS) 0
 
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
