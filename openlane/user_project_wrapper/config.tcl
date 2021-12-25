@@ -66,7 +66,7 @@ set ::env(EXTRA_GDS_FILES) "\
 	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
 
 set ::env(CLOCK_PORT) "wb_clk_i"
-set ::env(CLOCK_PERIOD) 20
+set ::env(CLOCK_PERIOD) 10
 set ::env(CLOCK_TREE_SYNTH) 0
 
 set ::env(DIODE_INSERTION_STRATEGY) 0
@@ -83,11 +83,9 @@ set ::env(FP_PDN_MACRO_HOOKS) " \
 
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_OBS) " \
-  met1 300  1000 983.1 1416.54, \
   met2 300  1000 983.1 1416.54, \
   met3 300  1000 983.1 1416.54, \
   met4 300  1000 983.1 1416.54, \
-  met1 300  2500 983.1 2916.54, \
   met2 300  2500 983.1 2916.54, \
   met3 300  2500 983.1 2916.54, \
   met4 300  2500 983.1 2916.54"

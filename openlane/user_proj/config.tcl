@@ -42,7 +42,7 @@ set ::env(VERILOG_FILES) "\
 #set ::env(VERILOG_INCLUDE_DIRS) [glob $script_dir/../../verilog/rtl/includes]
 
 set ::env(CLOCK_PORT) "wb_clk_i"
-set ::env(CLOCK_PERIOD) 20
+set ::env(CLOCK_PERIOD) 10
 
 set ::env(DIE_AREA) "0 0 900 900"
 
