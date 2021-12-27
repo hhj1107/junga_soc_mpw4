@@ -20,12 +20,12 @@ set ::env(PDK) "sky130A"
 set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
 
 # YOU ARE NOT ALLOWED TO CHANGE ANY VARIABLES DEFINED IN THE FIXED WRAPPER CFGS 
-source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl
-#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/fixed_wrapper_cfgs.tcl
+#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl
+source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/fixed_wrapper_cfgs.tcl
 
 # YOU CAN CHANGE ANY VARIABLES DEFINED IN THE DEFAULT WRAPPER CFGS BY OVERRIDING THEM IN THIS CONFIG.TCL
-source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/default_wrapper_cfgs.tcl
-#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/default_wrapper_cfgs.tcl
+#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/default_wrapper_cfgs.tcl
+source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/default_wrapper_cfgs.tcl
 
 set script_dir [file dirname [file normalize [info script]]]
 
@@ -89,8 +89,7 @@ set ::env(GLB_RT_OBS) " \
   met2 1100 2100 1783.1 2516.54, \
   met3 1100 2100 1783.1 2516.54, \
   met4 1100 2100 1783.1 2516.54"
-
-set ::env(KLAYOUT_XOR_GDS) 0
+#set ::env(KLAYOUT_XOR_GDS) 0
 
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 

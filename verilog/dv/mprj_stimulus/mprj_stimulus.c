@@ -34,7 +34,7 @@ void main()
 
     uint32_t testval;
 
-//    reg_hkspi_disable = 1;		// Shut off the housekeeping SPI,
+    reg_hkspi_disable = 1;		// Shut off the housekeeping SPI,
 					// so we can use the pins.
 
     reg_mprj_datal = 0x00000000;

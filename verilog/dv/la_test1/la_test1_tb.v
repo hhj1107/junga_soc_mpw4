@@ -24,14 +24,14 @@
 
 module la_test1_tb;
 	reg clock;
-	reg RSTB;
+    reg RSTB;
 	reg CSB;
 
 	reg power1, power2;
 
-	wire gpio;
+    	wire gpio;
 	wire uart_tx;
-	wire [37:0] mprj_io;
+    	wire [37:0] mprj_io;
 	wire [15:0] checkbits;
 
 	assign checkbits  = mprj_io[31:16];
@@ -40,7 +40,7 @@ module la_test1_tb;
 	always #12.5 clock <= (clock === 1'b0);
 
 	initial begin
-	clock = 0;
+		clock = 0;
 	end
 
 	assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
@@ -91,13 +91,13 @@ module la_test1_tb;
 		power2 <= 1'b1;
 	end
 
-	wire flash_csb;
+    	wire flash_csb;
 	wire flash_clk;
 	wire flash_io0;
 	wire flash_io1;
 
 	wire VDD1V8;
-	wire VDD3V3;
+    	wire VDD3V3;
 	wire VSS;
     
 	assign VDD3V3 = power1;
@@ -121,7 +121,7 @@ module la_test1_tb;
 		.vssd2	  (VSS),
 		.clock	  (clock),
 		.gpio     (gpio),
-		.mprj_io  (mprj_io),
+        	.mprj_io  (mprj_io),
 		.flash_csb(flash_csb),
 		.flash_clk(flash_clk),
 		.flash_io0(flash_io0),

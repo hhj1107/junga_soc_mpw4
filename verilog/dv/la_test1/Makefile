@@ -50,7 +50,7 @@ hex:  ${PATTERN:=.hex}
 ifeq ($(SIM),RTL)
 	iverilog $(SIM_DEFINES) -I $(PDK_PATH) \
 	-I $(CARAVEL_BEHAVIOURAL_MODELS) -I $(CARAVEL_RTL_PATH) \
-	-I $(UPRJ_BEHAVIOURAL_MODELS)    -I $(UPRJ_RTL_PATH) -I ../../../openlane/user_proj/src \
+	-I $(UPRJ_BEHAVIOURAL_MODELS)    -I $(UPRJ_RTL_PATH) \
 	$< -o $@ 
 else  
 	iverilog $(SIM_DEFINES) -DGL -I $(PDK_PATH) \

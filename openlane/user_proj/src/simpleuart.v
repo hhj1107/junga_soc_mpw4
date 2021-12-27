@@ -20,8 +20,8 @@
  *  SPDX-License-Identifier: ISC
  */
 
-module simpleuartA_wb # (
-    parameter BASE_ADR = 32'h 2000_0000,
+module simpleuart_wb # (
+    parameter BASE_ADR = 32'h4000_1000,
     parameter CLK_DIV = 8'h00,
     parameter DATA = 8'h04,
     parameter CONFIG = 8'h08
@@ -44,31 +44,31 @@ module simpleuartA_wb # (
     input  ser_rx
 
 );
-    wire [31:0] simpleuartA_reg_div_do;
-    wire [31:0] simpleuartA_reg_dat_do;
-    wire [31:0] simpleuartA_reg_cfg_do;
+    wire [31:0] simpleuart_reg_div_do;
+    wire [31:0] simpleuart_reg_dat_do;
+    wire [31:0] simpleuart_reg_cfg_do;
     wire reg_dat_wait;
 
     wire resetn = ~wb_rst_i;
     wire valid = wb_stb_i && wb_cyc_i; 
-    wire simpleuartA_reg_div_sel = valid && (wb_adr_i == (BASE_ADR | CLK_DIV));
-    wire simpleuartA_reg_dat_sel = valid && (wb_adr_i == (BASE_ADR | DATA));
-    wire simpleuartA_reg_cfg_sel = valid && (wb_adr_i == (BASE_ADR | CONFIG));
+    wire simpleuart_reg_div_sel = valid && (wb_adr_i == (BASE_ADR | CLK_DIV));
+    wire simpleuart_reg_dat_sel = valid && (wb_adr_i == (BASE_ADR | DATA));
+    wire simpleuart_reg_cfg_sel = valid && (wb_adr_i == (BASE_ADR | CONFIG));
 
-    wire [3:0] reg_div_we = simpleuartA_reg_div_sel ? (wb_sel_i & {4{wb_we_i}}): 4'b 0000; 
-    wire reg_dat_we = simpleuartA_reg_dat_sel ? (wb_sel_i[0] & wb_we_i): 1'b 0;      // simpleuartA_reg_dat_sel ? mem_wstrb[0] : 1'b 0
-    wire reg_cfg_we = simpleuartA_reg_cfg_sel ? (wb_sel_i[0] & wb_we_i): 1'b 0; 
+    wire [3:0] reg_div_we = simpleuart_reg_div_sel ? (wb_sel_i & {4{wb_we_i}}): 4'b 0000; 
+    wire reg_dat_we = simpleuart_reg_dat_sel ? (wb_sel_i[0] & wb_we_i): 1'b 0;      // simpleuart_reg_dat_sel ? mem_wstrb[0] : 1'b 0
+    wire reg_cfg_we = simpleuart_reg_cfg_sel ? (wb_sel_i[0] & wb_we_i): 1'b 0; 
 
     wire [31:0] mem_wdata = wb_dat_i;
-    wire reg_dat_re = simpleuartA_reg_dat_sel && !wb_sel_i && ~wb_we_i; // read_enable
+    wire reg_dat_re = simpleuart_reg_dat_sel && !wb_sel_i && ~wb_we_i; // read_enable
 
-    assign wb_dat_o = simpleuartA_reg_div_sel ? simpleuartA_reg_div_do:
-		      simpleuartA_reg_cfg_sel ? simpleuartA_reg_cfg_do:
-					       simpleuartA_reg_dat_do;
-    assign wb_ack_o = (simpleuartA_reg_div_sel || simpleuartA_reg_dat_sel
-			|| simpleuartA_reg_cfg_sel) && (!reg_dat_wait);
+    assign wb_dat_o = simpleuart_reg_div_sel ? simpleuart_reg_div_do:
+		      simpleuart_reg_cfg_sel ? simpleuart_reg_cfg_do:
+					       simpleuart_reg_dat_do;
+    assign wb_ack_o = (simpleuart_reg_div_sel || simpleuart_reg_dat_sel
+			|| simpleuart_reg_cfg_sel) && (!reg_dat_wait);
     
-    simpleuartA simpleuartA (
+    simpleuart simpleuart (
         .clk    (wb_clk_i),
         .resetn (resetn),
 
@@ -78,22 +78,22 @@ module simpleuartA_wb # (
 
         .reg_div_we  (reg_div_we), 
         .reg_div_di  (mem_wdata),
-        .reg_div_do  (simpleuartA_reg_div_do),
+        .reg_div_do  (simpleuart_reg_div_do),
 
         .reg_cfg_we  (reg_cfg_we), 
         .reg_cfg_di  (mem_wdata),
-        .reg_cfg_do  (simpleuartA_reg_cfg_do),
+        .reg_cfg_do  (simpleuart_reg_cfg_do),
 
         .reg_dat_we  (reg_dat_we),
         .reg_dat_re  (reg_dat_re),
         .reg_dat_di  (mem_wdata),
-        .reg_dat_do  (simpleuartA_reg_dat_do),
+        .reg_dat_do  (simpleuart_reg_dat_do),
         .reg_dat_wait(reg_dat_wait)
     );
 
 endmodule
 
-module simpleuartA (
+module simpleuart (
     input clk,
     input resetn,
 
