@@ -19,18 +19,13 @@
 set ::env(PDK) "sky130A"
 set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
 
-set script_dir [file dirname [file normalize [info script]]]
-
-set defaults_dir $script_dir
-if { [info exists ::env(CARAVEL_ROOT)] } {
-	set defaults_dir $::env(CARAVEL_ROOT)/openlane/user_project_wrapper
-}
-
 # YOU ARE NOT ALLOWED TO CHANGE ANY VARIABLES DEFINED IN THE FIXED WRAPPER CFGS 
-source $defaults_dir/fixed_wrapper_cfgs.tcl
+#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl
+source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/fixed_wrapper_cfgs.tcl
 
 # YOU CAN CHANGE ANY VARIABLES DEFINED IN THE DEFAULT WRAPPER CFGS BY OVERRIDING THEM IN THIS CONFIG.TCL
-source $defaults_dir/default_wrapper_cfgs.tcl
+#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/default_wrapper_cfgs.tcl
+source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/default_wrapper_cfgs.tcl
 
 set script_dir [file dirname [file normalize [info script]]]
 
@@ -40,39 +35,35 @@ set ::env(DESIGN_NAME) user_project_wrapper
 ######################################################
 # User Configurations
 
-set defines_dir $script_dir/../user_proj/src
-if { [info exists ::env(CARAVEL_ROOT)] } {
-	set defines_dir $::env(CARAVEL_ROOT)/verilog/rtl
-}
-
-#set sram_dir $::env(PDK_ROOT)/open_pdks/sources/sky130_sram_macros/sky130_sram_2kbyte_1rw1r_32x512_8
-set sram_dir $script_dir/src
-
-#set extra_dir $script_dir/../user_proj/runs/RUN_2021.12.25_22.40.59/results/final
-#set extra_dir $script_dir/../user_proj/runs/user_proj/results/final
-set extra_dir $script_dir/../..
-
 ## Source Verilog Files
 set ::env(VERILOG_FILES) "\
-	$defines_dir/defines.v \
+	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
 	$script_dir/src/user_project_wrapper.v"
 
 ### Black-box verilog and views
 set ::env(VERILOG_FILES_BLACKBOX) "\
-	$defines_dir/defines.v \
+	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
 	$script_dir/../user_proj/src/user_proj.v \
-	$sram_dir/sky130_sram_2kbyte_1rw1r_32x512_8.v"
+	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.v"
 
 set ::env(EXTRA_LEFS) "\
-	$extra_dir/lef/user_proj.lef \
-	$sram_dir/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
+	$script_dir/../../lef/user_proj.lef \
+	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
+
+#set ::env(EXTRA_LEFS) "\
+	$script_dir/../user_proj/runs/user_proj/results/final/lef/user_proj.lef \
+  $script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
 
 set ::env(EXTRA_GDS_FILES) "\
-	$extra_dir/gds/user_proj.gds \
-	$sram_dir/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
+	$script_dir/../../gds/user_proj.gds \
+	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
+
+set ::env(EXTRA_GDS_FILES) "\
+	$script_dir/../user_proj/runs/user_proj/results/final/gds/user_proj.gds \
+  $script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
 
 #set ::env(EXTRA_LIBS) "\
-	$sram_dir/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
+	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
 
 set ::env(CLOCK_PORT) "wb_clk_i"
 set ::env(CLOCK_PERIOD) 10
@@ -98,7 +89,6 @@ set ::env(GLB_RT_OBS) " \
   met2 1100 2100 1783.1 2516.54, \
   met3 1100 2100 1783.1 2516.54, \
   met4 1100 2100 1783.1 2516.54"
-
 #set ::env(KLAYOUT_XOR_GDS) 0
 
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg

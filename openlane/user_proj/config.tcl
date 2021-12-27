@@ -24,13 +24,8 @@ set ::env(DESIGN_IS_CORE) 0
 ######################################################
 # User Configurations
 
-set defines_dir $script_dir/src
-if { [info exists ::env(CARAVEL_ROOT)] } {
-	set defines_dir $::env(CARAVEL_ROOT)/verilog/rtl
-}
-
 set ::env(VERILOG_FILES) "\
-	$defines_dir/defines.v \
+	$::env(CARAVEL_ROOT)/verilog/rtl/defines.v \
 	$script_dir/src/user_proj.v \
         $script_dir/src/soc.v \
         $script_dir/src/vexriscv.v \
@@ -82,7 +77,5 @@ set ::env(RUN_MAGIC_DRC) 0
 set ::env(SYNTH_MAX_FANOUT) 4
 set ::env(SYNTH_DRIVING_CELL) "sky130_fd_sc_hd__inv_8"
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1
-
-#set ::env(USE_ARC_ANTENNA_CHECK) 0
 
 set ::env(VDD_NETS) [list {vccd1}]
