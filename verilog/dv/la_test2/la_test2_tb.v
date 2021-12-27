@@ -28,8 +28,8 @@ module la_test2_tb;
 
 	reg power1, power2;
 
-    	wire gpio;
-    	wire [37:0] mprj_io;
+	wire gpio;
+	wire [37:0] mprj_io;
 	wire [15:0] checkbits;
 
 	assign checkbits = mprj_io[31:16];
@@ -86,13 +86,13 @@ module la_test2_tb;
 		power2 <= 1'b1;
 	end
 
-    	wire flash_csb;
+	wire flash_csb;
 	wire flash_clk;
 	wire flash_io0;
 	wire flash_io1;
 
 	wire VDD1V8;
-    	wire VDD3V3;
+	wire VDD3V3;
 	wire VSS;
     
 	assign VDD3V3 = power1;
@@ -116,7 +116,7 @@ module la_test2_tb;
 		.vssd2	  (VSS),
 		.clock	  (clock),
 		.gpio     (gpio),
-        	.mprj_io  (mprj_io),
+		.mprj_io  (mprj_io),
 		.flash_csb(flash_csb),
 		.flash_clk(flash_clk),
 		.flash_io0(flash_io0),

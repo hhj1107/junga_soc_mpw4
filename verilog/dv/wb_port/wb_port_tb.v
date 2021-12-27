@@ -67,7 +67,7 @@ module wb_port_tb;
 	end
 
 	initial begin
-	   wait(checkbits == 16'h AB60);
+		wait(checkbits == 16'h AB60);
 		$display("Monitor: MPRJ-Logic WB Started");
 		wait(checkbits == 16'h AB61);
 		`ifdef GL
@@ -134,7 +134,7 @@ module wb_port_tb;
 		.vssd2	  (VSS),
 		.clock	  (clock),
 		.gpio     (gpio),
-        .mprj_io  (mprj_io),
+		.mprj_io  (mprj_io),
 		.flash_csb(flash_csb),
 		.flash_clk(flash_clk),
 		.flash_io0(flash_io0),

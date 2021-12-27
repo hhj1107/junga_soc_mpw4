@@ -21,7 +21,7 @@
 `include "caravel_netlists.v"
 `include "spiflash.v"
 
-module io_ports_tb;
+module wb_leds_tb;
 	reg clock;
 	reg RSTB;
 	reg CSB;
@@ -30,13 +30,13 @@ module io_ports_tb;
 
 	wire gpio;
 	wire [37:0] mprj_io;
-	wire [7:0] mprj_io_0;
+	wire led;
+	wire [7:0] checkbits;
 
-	assign mprj_io_0 = mprj_io[7:0];
-	// assign mprj_io_0 = {mprj_io[8:4],mprj_io[2:0]};
+	assign checkbits = mprj_io[23:16];
+	assign led = mprj_io[25];
 
 	assign mprj_io[3] = (CSB == 1'b1) ? 1'b1 : 1'bz;
-	// assign mprj_io[3] = 1'b1;
 
 	// External clock is used by default.  Make this artificially fast for the
 	// simulation.  Normally this would be a slow clock and the digital PLL
@@ -49,11 +49,11 @@ module io_ports_tb;
 	end
 
 	initial begin
-		$dumpfile("io_ports.vcd");
-		$dumpvars(0, io_ports_tb);
+		$dumpfile("wb_leds.vcd");
+		$dumpvars(0, wb_leds_tb);
 
 		// Repeat cycles of 1000 clock edges as needed to complete testbench
-		repeat (25) begin
+		repeat (30) begin
 			repeat (1000) @(posedge clock);
 			// $display("+1000 cycles");
 		end
@@ -68,20 +68,16 @@ module io_ports_tb;
 	end
 
 	initial begin
-		// Observe Output pins [7:0]
-		wait(mprj_io_0 == 8'h01);
-		wait(mprj_io_0 == 8'h02);
-		wait(mprj_io_0 == 8'h03);
-		wait(mprj_io_0 == 8'h04);
-		wait(mprj_io_0 == 8'h05);
-		wait(mprj_io_0 == 8'h06);
-		wait(mprj_io_0 == 8'h07);
-		wait(mprj_io_0 == 8'h08);
-		wait(mprj_io_0 == 8'h09);
-		wait(mprj_io_0 == 8'h0A);
-		wait(mprj_io_0 == 8'hFF);
-		wait(mprj_io_0 == 8'h00);
-		
+		wait(checkbits == 8'h 60);
+		$display("Monitor: MPRJ-Logic WB Started");
+		wait(checkbits == 8'h 61);
+
+		// wait for leds to get set
+		wait(led == 1'b0);
+		$display("Monitor: LED=0");
+		wait(led == 1'b1);
+		$display("Monitor: LED=1");
+
 		`ifdef GL
 	    	$display("Monitor: Test 1 Mega-Project IO (GL) Passed");
 		`else
@@ -94,12 +90,12 @@ module io_ports_tb;
 		RSTB <= 1'b0;
 		CSB  <= 1'b1;		// Force CSB high
 		#2000;
-		RSTB <= 1'b1;		// Release reset
+		RSTB <= 1'b1;	    	// Release reset
 		#170000;
-		CSB = 1'b0;			// CSB can be released
+		CSB = 1'b0;		// CSB can be released
 	end
 
-	initial begin			// Power-up sequence
+	initial begin		// Power-up sequence
 		power1 <= 1'b0;
 		power2 <= 1'b0;
 		power3 <= 1'b0;
@@ -155,7 +151,7 @@ module io_ports_tb;
 	);
 
 	spiflash #(
-		.FILENAME("io_ports.hex")
+		.FILENAME("wb_leds.hex")
 	) spiflash (
 		.csb(flash_csb),
 		.clk(flash_clk),
