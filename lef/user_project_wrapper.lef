@@ -6813,7 +6813,7 @@ MACRO user_project_wrapper
   END wbs_we_i
   OBS
       LAYER li1 ;
-        RECT 285.805 14.025 1266.695 2089.215 ;
+        RECT 124.345 14.025 1187.575 2091.255 ;
       LAYER met1 ;
         RECT 2.830 13.980 2917.250 3515.220 ;
       LAYER met2 ;
