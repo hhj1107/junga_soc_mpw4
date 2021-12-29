@@ -5,6 +5,10 @@
 `timescale 1ns/1ps 
 
 module VexRiscv (
+`ifdef USE_POWER_PINS
+  inout vccd1,	// User area 1 1.8V supply
+  inout vssd1,	// User area 1 digital ground
+`endif
   output              debug_resetOut,
   input               timerInterrupt,
   input               externalInterrupt,
@@ -1460,6 +1464,10 @@ module VexRiscv (
   end
 
   StreamFifoLowLatency IBusSimplePlugin_rspJoin_rspBuffer_c (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),	// User area 1 1.8V power
+    .vssd1(vssd1),	// User area 1 digital ground
+`endif
     .io_push_valid            (iBus_rsp_valid                                                  ), //i
     .io_push_ready            (IBusSimplePlugin_rspJoin_rspBuffer_c_io_push_ready              ), //o
     .io_push_payload_error    (iBus_rsp_payload_error                                          ), //i
@@ -1474,6 +1482,10 @@ module VexRiscv (
     .reset                    (reset                                                           )  //i
   );
   JtagBridge jtagBridge_1 (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),	// User area 1 1.8V power
+    .vssd1(vssd1),	// User area 1 digital ground
+`endif
     .io_jtag_tms                       (jtag_tms                                           ), //i
     .io_jtag_tdi                       (jtag_tdi                                           ), //i
     .io_jtag_tdo                       (jtagBridge_1_io_jtag_tdo                           ), //o
@@ -1490,6 +1502,10 @@ module VexRiscv (
     .jtag_rst                          (jtag_rst                                           )  //i
   );
   SystemDebugger systemDebugger_1 (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),	// User area 1 1.8V power
+    .vssd1(vssd1),	// User area 1 digital ground
+`endif
     .io_remote_cmd_valid               (jtagBridge_1_io_remote_cmd_valid                   ), //i
     .io_remote_cmd_ready               (systemDebugger_1_io_remote_cmd_ready               ), //o
     .io_remote_cmd_payload_last        (jtagBridge_1_io_remote_cmd_payload_last            ), //i
@@ -4976,6 +4992,10 @@ module VexRiscv (
 endmodule
 
 module SystemDebugger (
+`ifdef USE_POWER_PINS
+  inout vccd1,	// User area 1 1.8V supply
+  inout vssd1,	// User area 1 digital ground
+`endif
   input               io_remote_cmd_valid,
   output              io_remote_cmd_ready,
   input               io_remote_cmd_payload_last,
@@ -5063,6 +5083,10 @@ module SystemDebugger (
 endmodule
 
 module JtagBridge (
+`ifdef USE_POWER_PINS
+  inout vccd1,	// User area 1 1.8V supply
+  inout vssd1,	// User area 1 digital ground
+`endif
   input               io_jtag_tms,
   input               io_jtag_tdi,
   output              io_jtag_tdo,
@@ -5159,6 +5183,10 @@ module JtagBridge (
   assign _zz_jtag_tap_isBypass_1 = 4'b1111;
   assign _zz_jtag_tap_instructionShift = 2'b01;
   FlowCCByToggle flowCCByToggle_1 (
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),	// User area 1 1.8V power
+    .vssd1(vssd1),	// User area 1 digital ground
+`endif
     .io_input_valid                (jtag_writeArea_source_valid                  ), //i
     .io_input_payload_last         (jtag_writeArea_source_payload_last           ), //i
     .io_input_payload_fragment     (jtag_writeArea_source_payload_fragment       ), //i
@@ -5417,6 +5445,10 @@ module JtagBridge (
 endmodule
 
 module StreamFifoLowLatency (
+`ifdef USE_POWER_PINS
+  inout vccd1,	// User area 1 1.8V supply
+  inout vssd1,	// User area 1 digital ground
+`endif
   input               io_push_valid,
   output              io_push_ready,
   input               io_push_payload_error,
@@ -5551,6 +5583,10 @@ module StreamFifoLowLatency (
 endmodule
 
 module FlowCCByToggle (
+`ifdef USE_POWER_PINS
+  inout vccd1,	// User area 1 1.8V supply
+  inout vssd1,	// User area 1 digital ground
+`endif
   input               io_input_valid,
   input               io_input_payload_last,
   input      [0:0]    io_input_payload_fragment,
@@ -5577,7 +5613,11 @@ module FlowCCByToggle (
   reg        [0:0]    outputArea_flow_m2sPipe_payload_fragment;
 
   BufferCC inputArea_target_buffercc (
-    .io_dataIn     (inputArea_target                      ), //i
+`ifdef USE_POWER_PINS
+    .vccd1(vccd1),	// User area 1 1.8V power
+    .vssd1(vssd1),	// User area 1 digital ground
+`endif
+  .io_dataIn     (inputArea_target                      ), //i
     .io_dataOut    (inputArea_target_buffercc_io_dataOut  ), //o
     .clk           (clk                                   ), //i
     .jtag_rst      (jtag_rst                              )  //i
@@ -5617,6 +5657,10 @@ module FlowCCByToggle (
 endmodule
 
 module BufferCC (
+`ifdef USE_POWER_PINS
+  inout vccd1,	// User area 1 1.8V supply
+  inout vssd1,	// User area 1 digital ground
+`endif
   input               io_dataIn,
   output              io_dataOut,
   input               clk,

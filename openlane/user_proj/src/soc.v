@@ -254,12 +254,11 @@ sbt "runMain vexriscv.demo.GenRB"
 */
 
 VexRiscv cpu0 (
-/*
 `ifdef USE_POWER_PINS
   .vccd1(vccd1),	// User area 1 1.8V power
   .vssd1(vssd1),	// User area 1 digital ground
 `endif
-*/
+
   .clk(clk),
   .reset(rst),
 
