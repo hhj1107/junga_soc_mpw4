@@ -93,9 +93,6 @@ wire [3:0] o_wmask0;
 wire [8:0] o_waddr0;
 wire [31:0]o_din0;
 wire [31:0]i_dout0;
-wire o_csb1;
-wire [8:0] o_addr1;
-wire [31:0]i_dout1;
 
 wire o_csb0_1;
 wire o_web0_1;
@@ -103,9 +100,6 @@ wire [3:0] o_wmask0_1;
 wire [8:0] o_waddr0_1;
 wire [31:0]o_din0_1;
 wire [31:0]i_dout0_1;
-wire o_csb1_1;
-wire [8:0] o_addr1_1;
-wire [31:0]i_dout1_1;
 
 sky130_sram_2kbyte_1rw1r_32x512_8 sram (
 `ifdef USE_POWER_PINS
@@ -119,10 +113,9 @@ sky130_sram_2kbyte_1rw1r_32x512_8 sram (
     .addr0  (o_waddr0),
     .din0   (o_din0),
     .dout0  (i_dout0),
-    .clk1   (wb_clk_i),
-    .csb1   (o_csb1),
-    .addr1  (o_addr1),
-    .dout1  (i_dout1)
+    .clk1   (1'b0),
+    .csb1   (1'b0),
+    .addr1  (9'h0)
 );
 
 sky130_sram_2kbyte_1rw1r_32x512_8 sram1 (
@@ -137,10 +130,9 @@ sky130_sram_2kbyte_1rw1r_32x512_8 sram1 (
     .addr0  (o_waddr0_1),
     .din0   (o_din0_1),
     .dout0  (i_dout0_1),
-    .clk1   (wb_clk_i),
-    .csb1   (o_csb1_1),
-    .addr1  (o_addr1_1),
-    .dout1  (i_dout1_1)
+    .clk1   (1'b0),
+    .csb1   (1'b0),
+    .addr1  (9'h0)
 );
 
 user_proj mprj (
@@ -148,6 +140,9 @@ user_proj mprj (
 	.vccd1(vccd1),	// User area 1 1.8V power
 	.vssd1(vssd1),	// User area 1 digital ground
 `endif
+
+    .clk_i(wb_clk_i),
+    .rst_i(wb_rst_i),
 
     .wb_clk_i(wb_clk_i),
     .wb_rst_i(wb_rst_i),
@@ -180,22 +175,16 @@ user_proj mprj (
     .o_waddr0(o_waddr0),
     .o_din0(o_din0),
     .i_dout0(i_dout0),
-    .o_addr1(o_addr1),
-    .i_dout1(i_dout1),
     .o_web0(o_web0),
     .o_csb0(o_csb0),
-    .o_csb1(o_csb1),
 
     // SRAM1
     .o_wmask0_1(o_wmask0_1),
     .o_waddr0_1(o_waddr0_1),
     .o_din0_1(o_din0_1),
     .i_dout0_1(i_dout0_1),
-    .o_addr1_1(o_addr1_1),
-    .i_dout1_1(i_dout1_1),
     .o_web0_1(o_web0_1),
-    .o_csb0_1(o_csb0_1),
-    .o_csb1_1(o_csb1_1)
+    .o_csb0_1(o_csb0_1)
 );
 
 endmodule	// user_project_wrapper

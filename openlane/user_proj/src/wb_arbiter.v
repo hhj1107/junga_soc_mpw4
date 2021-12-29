@@ -25,7 +25,7 @@
 module wb_arbiter
  #(parameter dw = 32,
    parameter aw = 32,
-   parameter num_masters = 0)
+   parameter num_masters = 1)
   (
 `ifdef USE_POWER_PINS
     inout vccd1,	// User area 1 1.8V supply
@@ -91,7 +91,12 @@ module wb_arbiter
    arbiter
      #(.NUM_PORTS (num_masters))
    arbiter0
-     (.clk (wb_clk_i),
+     (
+`ifdef USE_POWER_PINS
+  .vccd1(vccd1),	// User area 1 1.8V power
+  .vssd1(vssd1),	// User area 1 digital ground
+`endif
+      .clk (wb_clk_i),
       .rst (wb_rst_i),
       .request (wbm_cyc_i),
       .grant (grant),

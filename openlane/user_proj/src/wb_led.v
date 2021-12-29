@@ -24,16 +24,14 @@ module wb_led(
 // Wishbone register addresses
 localparam
     wb_r_DATA  = 1'b0,
-    wb_r_SHIFT = 1'b1,
     wb_r_MAX   = 1'b1;
 
 // register
 reg [31:0] data;
-reg [5:0] shift;
 
 // output generation
 always @(posedge i_clk) begin
-    o_led <= data[shift];
+    o_led <= data[0];
 end
 
 // Since the incoming wishbone address from the CPU increments by 4 bytes, we
@@ -45,7 +43,6 @@ always @(posedge i_clk) begin
     if (i_reset) begin
         o_wb_ack <= 0;
         data <= 0;
-        shift <= 0;
     end else begin
         // Wishbone interface logic
         o_wb_ack <= 1'b0;
@@ -55,14 +52,12 @@ always @(posedge i_clk) begin
             // Register read
             case (register_index)
                 wb_r_DATA: o_wb_dat <= data;
-                wb_r_SHIFT:o_wb_dat <= shift;
             endcase
 
             // Register write
             if (i_wb_we) begin
                 case (register_index)
                     wb_r_DATA: data <= i_wb_dat;
-                    wb_r_SHIFT: shift <= i_wb_dat;
                 endcase
             end
         end

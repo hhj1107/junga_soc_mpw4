@@ -39,7 +39,7 @@ set ::env(VERILOG_FILES) "\
         $script_dir/src/wb_led.v \
         $script_dir/src/timer_wb.v"
 
-#set ::env(VERILOG_INCLUDE_DIRS) [glob $script_dir/../../verilog/rtl/includes]
+set ::env(VERILOG_INCLUDE_DIRS) [glob $script_dir/src]
 
 set ::env(CLOCK_PORT) "wb_clk_i"
 set ::env(CLOCK_PERIOD) 10
