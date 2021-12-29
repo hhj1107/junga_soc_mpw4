@@ -118,92 +118,8 @@ module user_project_wrapper (user_clock2,
  wire \i_dout0_1[7] ;
  wire \i_dout0_1[8] ;
  wire \i_dout0_1[9] ;
- wire \i_dout1[0] ;
- wire \i_dout1[10] ;
- wire \i_dout1[11] ;
- wire \i_dout1[12] ;
- wire \i_dout1[13] ;
- wire \i_dout1[14] ;
- wire \i_dout1[15] ;
- wire \i_dout1[16] ;
- wire \i_dout1[17] ;
- wire \i_dout1[18] ;
- wire \i_dout1[19] ;
- wire \i_dout1[1] ;
- wire \i_dout1[20] ;
- wire \i_dout1[21] ;
- wire \i_dout1[22] ;
- wire \i_dout1[23] ;
- wire \i_dout1[24] ;
- wire \i_dout1[25] ;
- wire \i_dout1[26] ;
- wire \i_dout1[27] ;
- wire \i_dout1[28] ;
- wire \i_dout1[29] ;
- wire \i_dout1[2] ;
- wire \i_dout1[30] ;
- wire \i_dout1[31] ;
- wire \i_dout1[3] ;
- wire \i_dout1[4] ;
- wire \i_dout1[5] ;
- wire \i_dout1[6] ;
- wire \i_dout1[7] ;
- wire \i_dout1[8] ;
- wire \i_dout1[9] ;
- wire \i_dout1_1[0] ;
- wire \i_dout1_1[10] ;
- wire \i_dout1_1[11] ;
- wire \i_dout1_1[12] ;
- wire \i_dout1_1[13] ;
- wire \i_dout1_1[14] ;
- wire \i_dout1_1[15] ;
- wire \i_dout1_1[16] ;
- wire \i_dout1_1[17] ;
- wire \i_dout1_1[18] ;
- wire \i_dout1_1[19] ;
- wire \i_dout1_1[1] ;
- wire \i_dout1_1[20] ;
- wire \i_dout1_1[21] ;
- wire \i_dout1_1[22] ;
- wire \i_dout1_1[23] ;
- wire \i_dout1_1[24] ;
- wire \i_dout1_1[25] ;
- wire \i_dout1_1[26] ;
- wire \i_dout1_1[27] ;
- wire \i_dout1_1[28] ;
- wire \i_dout1_1[29] ;
- wire \i_dout1_1[2] ;
- wire \i_dout1_1[30] ;
- wire \i_dout1_1[31] ;
- wire \i_dout1_1[3] ;
- wire \i_dout1_1[4] ;
- wire \i_dout1_1[5] ;
- wire \i_dout1_1[6] ;
- wire \i_dout1_1[7] ;
- wire \i_dout1_1[8] ;
- wire \i_dout1_1[9] ;
- wire \o_addr1[0] ;
- wire \o_addr1[1] ;
- wire \o_addr1[2] ;
- wire \o_addr1[3] ;
- wire \o_addr1[4] ;
- wire \o_addr1[5] ;
- wire \o_addr1[6] ;
- wire \o_addr1[7] ;
- wire \o_addr1[8] ;
- wire \o_addr1_1[0] ;
- wire \o_addr1_1[1] ;
- wire \o_addr1_1[2] ;
- wire \o_addr1_1[3] ;
- wire \o_addr1_1[4] ;
- wire \o_addr1_1[5] ;
- wire \o_addr1_1[6] ;
- wire \o_addr1_1[7] ;
- wire \o_addr1_1[8] ;
  wire o_csb0;
  wire o_csb0_1;
- wire o_csb1;
- wire o_csb1_1;
  wire \o_din0[0] ;
  wire \o_din0[10] ;
  wire \o_din0[11] ;
@@ -297,12 +213,12 @@ module user_project_wrapper (user_clock2,
  wire \o_wmask0_1[2] ;
  wire \o_wmask0_1[3] ;
 
- user_proj mprj (.o_csb0(o_csb0),
+ user_proj mprj (.clk_i(wb_clk_i),
+    .o_csb0(o_csb0),
     .o_csb0_1(o_csb0_1),
-    .o_csb1(o_csb1),
-    .o_csb1_1(o_csb1_1),
     .o_web0(o_web0),
     .o_web0_1(o_web0_1),
+    .rst_i(wb_rst_i),
     .vccd1(vccd1),
     .vssd1(vssd1),
     .wb_clk_i(wb_clk_i),
@@ -375,70 +291,6 @@ module user_project_wrapper (user_clock2,
     \i_dout0_1[2] ,
     \i_dout0_1[1] ,
     \i_dout0_1[0] }),
-    .i_dout1({\i_dout1[31] ,
-    \i_dout1[30] ,
-    \i_dout1[29] ,
-    \i_dout1[28] ,
-    \i_dout1[27] ,
-    \i_dout1[26] ,
-    \i_dout1[25] ,
-    \i_dout1[24] ,
-    \i_dout1[23] ,
-    \i_dout1[22] ,
-    \i_dout1[21] ,
-    \i_dout1[20] ,
-    \i_dout1[19] ,
-    \i_dout1[18] ,
-    \i_dout1[17] ,
-    \i_dout1[16] ,
-    \i_dout1[15] ,
-    \i_dout1[14] ,
-    \i_dout1[13] ,
-    \i_dout1[12] ,
-    \i_dout1[11] ,
-    \i_dout1[10] ,
-    \i_dout1[9] ,
-    \i_dout1[8] ,
-    \i_dout1[7] ,
-    \i_dout1[6] ,
-    \i_dout1[5] ,
-    \i_dout1[4] ,
-    \i_dout1[3] ,
-    \i_dout1[2] ,
-    \i_dout1[1] ,
-    \i_dout1[0] }),
-    .i_dout1_1({\i_dout1_1[31] ,
-    \i_dout1_1[30] ,
-    \i_dout1_1[29] ,
-    \i_dout1_1[28] ,
-    \i_dout1_1[27] ,
-    \i_dout1_1[26] ,
-    \i_dout1_1[25] ,
-    \i_dout1_1[24] ,
-    \i_dout1_1[23] ,
-    \i_dout1_1[22] ,
-    \i_dout1_1[21] ,
-    \i_dout1_1[20] ,
-    \i_dout1_1[19] ,
-    \i_dout1_1[18] ,
-    \i_dout1_1[17] ,
-    \i_dout1_1[16] ,
-    \i_dout1_1[15] ,
-    \i_dout1_1[14] ,
-    \i_dout1_1[13] ,
-    \i_dout1_1[12] ,
-    \i_dout1_1[11] ,
-    \i_dout1_1[10] ,
-    \i_dout1_1[9] ,
-    \i_dout1_1[8] ,
-    \i_dout1_1[7] ,
-    \i_dout1_1[6] ,
-    \i_dout1_1[5] ,
-    \i_dout1_1[4] ,
-    \i_dout1_1[3] ,
-    \i_dout1_1[2] ,
-    \i_dout1_1[1] ,
-    \i_dout1_1[0] }),
     .io_in({io_in[37],
     io_in[36],
     io_in[35],
@@ -556,24 +408,6 @@ module user_project_wrapper (user_clock2,
     .irq({user_irq[2],
     user_irq[1],
     user_irq[0]}),
-    .o_addr1({\o_addr1[8] ,
-    \o_addr1[7] ,
-    \o_addr1[6] ,
-    \o_addr1[5] ,
-    \o_addr1[4] ,
-    \o_addr1[3] ,
-    \o_addr1[2] ,
-    \o_addr1[1] ,
-    \o_addr1[0] }),
-    .o_addr1_1({\o_addr1_1[8] ,
-    \o_addr1_1[7] ,
-    \o_addr1_1[6] ,
-    \o_addr1_1[5] ,
-    \o_addr1_1[4] ,
-    \o_addr1_1[3] ,
-    \o_addr1_1[2] ,
-    \o_addr1_1[1] ,
-    \o_addr1_1[0] }),
     .o_din0({\o_din0[31] ,
     \o_din0[30] ,
     \o_din0[29] ,
@@ -765,10 +599,10 @@ module user_project_wrapper (user_clock2,
     wbs_sel_i[1],
     wbs_sel_i[0]}));
  sky130_sram_2kbyte_1rw1r_32x512_8 sram (.csb0(o_csb0),
-    .csb1(o_csb1),
+    .csb1(zero_),
     .web0(o_web0),
     .clk0(wb_clk_i),
-    .clk1(wb_clk_i),
+    .clk1(zero_),
     .vccd1(vccd1),
     .vssd1(vssd1),
     .addr0({\o_waddr0[8] ,
@@ -780,15 +614,15 @@ module user_project_wrapper (user_clock2,
     \o_waddr0[2] ,
     \o_waddr0[1] ,
     \o_waddr0[0] }),
-    .addr1({\o_addr1[8] ,
-    \o_addr1[7] ,
-    \o_addr1[6] ,
-    \o_addr1[5] ,
-    \o_addr1[4] ,
-    \o_addr1[3] ,
-    \o_addr1[2] ,
-    \o_addr1[1] ,
-    \o_addr1[0] }),
+    .addr1({zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_}),
     .din0({\o_din0[31] ,
     \o_din0[30] ,
     \o_din0[29] ,
@@ -853,47 +687,47 @@ module user_project_wrapper (user_clock2,
     \i_dout0[2] ,
     \i_dout0[1] ,
     \i_dout0[0] }),
-    .dout1({\i_dout1[31] ,
-    \i_dout1[30] ,
-    \i_dout1[29] ,
-    \i_dout1[28] ,
-    \i_dout1[27] ,
-    \i_dout1[26] ,
-    \i_dout1[25] ,
-    \i_dout1[24] ,
-    \i_dout1[23] ,
-    \i_dout1[22] ,
-    \i_dout1[21] ,
-    \i_dout1[20] ,
-    \i_dout1[19] ,
-    \i_dout1[18] ,
-    \i_dout1[17] ,
-    \i_dout1[16] ,
-    \i_dout1[15] ,
-    \i_dout1[14] ,
-    \i_dout1[13] ,
-    \i_dout1[12] ,
-    \i_dout1[11] ,
-    \i_dout1[10] ,
-    \i_dout1[9] ,
-    \i_dout1[8] ,
-    \i_dout1[7] ,
-    \i_dout1[6] ,
-    \i_dout1[5] ,
-    \i_dout1[4] ,
-    \i_dout1[3] ,
-    \i_dout1[2] ,
-    \i_dout1[1] ,
-    \i_dout1[0] }),
+    .dout1({_NC1,
+    _NC2,
+    _NC3,
+    _NC4,
+    _NC5,
+    _NC6,
+    _NC7,
+    _NC8,
+    _NC9,
+    _NC10,
+    _NC11,
+    _NC12,
+    _NC13,
+    _NC14,
+    _NC15,
+    _NC16,
+    _NC17,
+    _NC18,
+    _NC19,
+    _NC20,
+    _NC21,
+    _NC22,
+    _NC23,
+    _NC24,
+    _NC25,
+    _NC26,
+    _NC27,
+    _NC28,
+    _NC29,
+    _NC30,
+    _NC31,
+    _NC32}),
     .wmask0({\o_wmask0[3] ,
     \o_wmask0[2] ,
     \o_wmask0[1] ,
     \o_wmask0[0] }));
  sky130_sram_2kbyte_1rw1r_32x512_8 sram1 (.csb0(o_csb0_1),
-    .csb1(o_csb1_1),
+    .csb1(zero_),
     .web0(o_web0_1),
     .clk0(wb_clk_i),
-    .clk1(wb_clk_i),
+    .clk1(zero_),
     .vccd1(vccd1),
     .vssd1(vssd1),
     .addr0({\o_waddr0_1[8] ,
@@ -905,15 +739,15 @@ module user_project_wrapper (user_clock2,
     \o_waddr0_1[2] ,
     \o_waddr0_1[1] ,
     \o_waddr0_1[0] }),
-    .addr1({\o_addr1_1[8] ,
-    \o_addr1_1[7] ,
-    \o_addr1_1[6] ,
-    \o_addr1_1[5] ,
-    \o_addr1_1[4] ,
-    \o_addr1_1[3] ,
-    \o_addr1_1[2] ,
-    \o_addr1_1[1] ,
-    \o_addr1_1[0] }),
+    .addr1({zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_,
+    zero_}),
     .din0({\o_din0_1[31] ,
     \o_din0_1[30] ,
     \o_din0_1[29] ,
@@ -978,38 +812,38 @@ module user_project_wrapper (user_clock2,
     \i_dout0_1[2] ,
     \i_dout0_1[1] ,
     \i_dout0_1[0] }),
-    .dout1({\i_dout1_1[31] ,
-    \i_dout1_1[30] ,
-    \i_dout1_1[29] ,
-    \i_dout1_1[28] ,
-    \i_dout1_1[27] ,
-    \i_dout1_1[26] ,
-    \i_dout1_1[25] ,
-    \i_dout1_1[24] ,
-    \i_dout1_1[23] ,
-    \i_dout1_1[22] ,
-    \i_dout1_1[21] ,
-    \i_dout1_1[20] ,
-    \i_dout1_1[19] ,
-    \i_dout1_1[18] ,
-    \i_dout1_1[17] ,
-    \i_dout1_1[16] ,
-    \i_dout1_1[15] ,
-    \i_dout1_1[14] ,
-    \i_dout1_1[13] ,
-    \i_dout1_1[12] ,
-    \i_dout1_1[11] ,
-    \i_dout1_1[10] ,
-    \i_dout1_1[9] ,
-    \i_dout1_1[8] ,
-    \i_dout1_1[7] ,
-    \i_dout1_1[6] ,
-    \i_dout1_1[5] ,
-    \i_dout1_1[4] ,
-    \i_dout1_1[3] ,
-    \i_dout1_1[2] ,
-    \i_dout1_1[1] ,
-    \i_dout1_1[0] }),
+    .dout1({_NC33,
+    _NC34,
+    _NC35,
+    _NC36,
+    _NC37,
+    _NC38,
+    _NC39,
+    _NC40,
+    _NC41,
+    _NC42,
+    _NC43,
+    _NC44,
+    _NC45,
+    _NC46,
+    _NC47,
+    _NC48,
+    _NC49,
+    _NC50,
+    _NC51,
+    _NC52,
+    _NC53,
+    _NC54,
+    _NC55,
+    _NC56,
+    _NC57,
+    _NC58,
+    _NC59,
+    _NC60,
+    _NC61,
+    _NC62,
+    _NC63,
+    _NC64}),
     .wmask0({\o_wmask0_1[3] ,
     \o_wmask0_1[2] ,
     \o_wmask0_1[1] ,
