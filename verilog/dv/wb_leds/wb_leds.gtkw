@@ -1,0 +1,170 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Wed Dec 29 05:13:16 2021
+[*]
+[dumpfile] "/local/home/roman/projects/opencircuitdesign/shuttle4/caravel_user_project/verilog/dv/wb_leds/wb_leds.vcd"
+[dumpfile_mtime] "Wed Dec 29 05:05:55 2021"
+[dumpfile_size] 174507059
+[savefile] "/local/home/roman/projects/opencircuitdesign/shuttle4/caravel_user_project/verilog/dv/wb_leds/wb_leds.gtkw"
+[timestart] 0
+[size] 3092 1672
+[pos] -1 -1
+*-24.365459 152937500 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] wb_leds_tb.
+[treeopen] wb_leds_tb.uut.
+[treeopen] wb_leds_tb.uut.mprj.
+[treeopen] wb_leds_tb.uut.mprj.mprj.
+[treeopen] wb_leds_tb.uut.mprj.mprj.soc.
+[treeopen] wb_leds_tb.uut.mprj.mprj.soc.cpu0.
+[treeopen] wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.
+[sst_width] 605
+[signals_width] 702
+[sst_expanded] 1
+[sst_vpaned_height] 864
+@200
+-qspi
+@28
+wb_leds_tb.spiflash.clk
+wb_leds_tb.spiflash.csb
+@22
+wb_leds_tb.spiflash.spi_addr[23:0]
+@200
+-uut
+@28
+wb_leds_tb.uut.caravel_clk
+wb_leds_tb.uut.caravel_clk2
+wb_leds_tb.uut.caravel_rstn
+wb_leds_tb.uut.clock
+wb_leds_tb.uut.resetb
+wb_leds_tb.uut.clock_core
+wb_leds_tb.uut.mprj_clock
+wb_leds_tb.uut.mprj_clock2
+wb_leds_tb.uut.mprj_reset
+@200
+-mprj
+@28
+wb_leds_tb.uut.mprj.user_clock2
+wb_leds_tb.uut.mprj.wb_clk_i
+wb_leds_tb.uut.mprj.wb_rst_i
+@22
+wb_leds_tb.uut.mprj.wbs_adr_i[31:0]
+wb_leds_tb.uut.mprj.wbs_dat_i[31:0]
+wb_leds_tb.uut.mprj.wbs_dat_o[31:0]
+@28
+wb_leds_tb.uut.mprj.wbs_stb_i
+wb_leds_tb.uut.mprj.wbs_cyc_i
+wb_leds_tb.uut.mprj.wbs_ack_o
+@22
+wb_leds_tb.uut.mprj.wbs_sel_i[3:0]
+@28
+wb_leds_tb.uut.mprj.wbs_we_i
+@200
+-
+@28
+wb_leds_tb.uut.mprj.mprj.clk_i
+wb_leds_tb.uut.mprj.mprj.rst_i
+wb_leds_tb.uut.mprj.mprj.wb_clk_i
+wb_leds_tb.uut.mprj.mprj.wb_rst_i
+@22
+wb_leds_tb.uut.mprj.mprj.wbs_adr_i[31:0]
+wb_leds_tb.uut.mprj.mprj.wbs_dat_i[31:0]
+wb_leds_tb.uut.mprj.mprj.wbs_dat_o[31:0]
+@200
+-soc
+@28
+wb_leds_tb.uut.mprj.mprj.soc.clk
+wb_leds_tb.uut.mprj.mprj.soc.rst
+wb_leds_tb.uut.mprj.mprj.soc.jtag_tck
+wb_leds_tb.uut.mprj.mprj.soc.jtag_trst
+wb_leds_tb.uut.mprj.mprj.soc.LED
+wb_leds_tb.uut.mprj.mprj.soc.wb_clk
+wb_leds_tb.uut.mprj.mprj.soc.wb_rst
+@22
+wb_leds_tb.uut.mprj.mprj.soc.mprj_dat_i[31:0]
+wb_leds_tb.uut.mprj.mprj.soc.mprj_dat_o[31:0]
+@200
+-cpu
+@28
+wb_leds_tb.uut.mprj.mprj.soc.cpu0.clk
+wb_leds_tb.uut.mprj.mprj.soc.cpu0.reset
+wb_leds_tb.uut.mprj.mprj.soc.cpu0.jtag_tck
+wb_leds_tb.uut.mprj.mprj.soc.cpu0.jtag_rst
+@22
+wb_leds_tb.uut.mprj.mprj.soc.cpu0.memory_PC[31:0]
+@200
+-led
+@28
+wb_leds_tb.uut.mprj.mprj.soc.led.i_clk
+wb_leds_tb.uut.mprj.mprj.soc.led.i_reset
+wb_leds_tb.uut.mprj.mprj.soc.led.register_index
+@22
+wb_leds_tb.uut.mprj.mprj.soc.led.i_wb_adr[31:0]
+wb_leds_tb.uut.mprj.mprj.soc.led.i_wb_dat[31:0]
+@29
+wb_leds_tb.uut.mprj.mprj.soc.led.o_led
+@28
+wb_leds_tb.uut.mprj.mprj.soc.led.o_wb_ack
+@22
+wb_leds_tb.uut.mprj.mprj.soc.led.o_wb_dat[31:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.led.i_wb_stb
+wb_leds_tb.uut.mprj.mprj.soc.led.i_wb_we
+@22
+wb_leds_tb.uut.mprj.mprj.soc.led.i_wb_sel[3:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.led.i_wb_cyc
+@200
+-interconnect
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_clk_i
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_rst_i
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_ack_o
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_adr_i[31:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_bte_i[1:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_cti_i[2:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_cyc_i
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_dat_i[31:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_dat_o[31:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_err_o
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_rty_o
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_sel_i[3:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_stb_i
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_mgmt_we_i
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_ack_i
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_adr_o[31:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_bte_o[1:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_cti_o[2:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_cyc_o
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_dat_i[31:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_dat_o[31:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_err_i
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_rty_i
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_sel_o[3:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_stb_o
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_led0_we_o
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_adr[31:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_bte[1:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_cti[2:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_cyc
+@22
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_dat[31:0]
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_sel[3:0]
+@28
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_stb
+wb_leds_tb.uut.mprj.mprj.soc.wb_interconA0.wb_m2s_mgmt_cpu0_rom_we
+[pattern_trace] 1
+[pattern_trace] 0

@@ -33,8 +33,8 @@
     `include "../../../openlane/user_proj/src/wb_arbiter.v"
     `include "../../../openlane/user_proj/src/wb_mux.v"
     `include "../../../openlane/user_proj/src/wb_interconnect.v"
-//    `include "../../../openlane/user_proj/src/simpleuart.v"
     `include "../../../openlane/user_proj/src/wb_openram_wrapper.v"
     `include "../../../openlane/user_proj/src/wb_led.v"
     `include "../../../openlane/user_proj/src/timer_wb.v"
+    `include "../../../openlane/user_proj/src/simpleuart.v"
 `endif
