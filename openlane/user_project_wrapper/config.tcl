@@ -20,12 +20,10 @@ set ::env(PDK) "sky130A"
 set ::env(STD_CELL_LIBRARY) "sky130_fd_sc_hd"
 
 # YOU ARE NOT ALLOWED TO CHANGE ANY VARIABLES DEFINED IN THE FIXED WRAPPER CFGS 
-#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl
-source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/fixed_wrapper_cfgs.tcl
+source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/fixed_wrapper_cfgs.tcl
 
 # YOU CAN CHANGE ANY VARIABLES DEFINED IN THE DEFAULT WRAPPER CFGS BY OVERRIDING THEM IN THIS CONFIG.TCL
-#source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/default_wrapper_cfgs.tcl
-source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper/default_wrapper_cfgs.tcl
+source $::env(CARAVEL_ROOT)/openlane/user_project_wrapper_empty/default_wrapper_cfgs.tcl
 
 set script_dir [file dirname [file normalize [info script]]]
 
@@ -50,17 +48,9 @@ set ::env(EXTRA_LEFS) "\
 	$script_dir/../../lef/user_proj.lef \
 	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
 
-#set ::env(EXTRA_LEFS) "\
-	$script_dir/../user_proj/runs/user_proj/results/final/lef/user_proj.lef \
-  $script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.lef"
-
 set ::env(EXTRA_GDS_FILES) "\
 	$script_dir/../../gds/user_proj.gds \
 	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
-
-set ::env(EXTRA_GDS_FILES) "\
-	$script_dir/../user_proj/runs/user_proj/results/final/gds/user_proj.gds \
-  $script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8.gds"
 
 #set ::env(EXTRA_LIBS) "\
 	$script_dir/src/sky130_sram_2kbyte_1rw1r_32x512_8_TT_1p8V_25C.lib"
@@ -73,7 +63,7 @@ set ::env(DIODE_INSERTION_STRATEGY) 0
 
 set ::env(FILL_INSERTION) 0
 
-set ::env(FP_CORE_UTIL) 15
+set ::env(FP_CORE_UTIL) 30
 set ::env(FP_PDN_CHECK_NODES) 0
 set ::env(FP_PDN_ENABLE_RAILS) 0
 set ::env(FP_PDN_MACRO_HOOKS) " \
@@ -83,15 +73,16 @@ set ::env(FP_PDN_MACRO_HOOKS) " \
 
 set ::env(GLB_RT_MAXLAYER) 5
 set ::env(GLB_RT_OBS) " \
-  met1 300  2100 983.1  2516.54, \
-  met2 300  2100 983.1  2516.54, \
-  met3 300  2100 983.1  2516.54, \
-  met4 300  2100 983.1  2516.54, \
-  met1 1100 2100 1783.1 2516.54, \
-  met2 1100 2100 1783.1 2516.54, \
-  met3 1100 2100 1783.1 2516.54, \
-  met4 1100 2100 1783.1 2516.54"
-#set ::env(KLAYOUT_XOR_GDS) 0
+  met1 300  2230 983.1  2646.54, \
+  met2 300  2230 983.1  2646.54, \
+  met3 300  2230 983.1  2646.54, \
+  met4 300  2230 983.1  2646.54, \
+  met1 1100 2230 1783.1 2646.54, \
+  met2 1100 2230 1783.1 2646.54, \
+  met3 1100 2230 1783.1 2646.54, \
+  met4 1100 2230 1783.1 2646.54"
+
+set ::env(KLAYOUT_XOR_GDS) 0
 
 set ::env(MACRO_PLACEMENT_CFG) $script_dir/macro.cfg
 
@@ -107,17 +98,15 @@ set ::env(PL_RESIZER_BUFFER_OUTPUT_PORTS) 0
 set ::env(QUIT_ON_HOLD_VIOLATIONS) 0
 set ::env(QUIT_ON_TIMING_VIOLATIONS) 0
 set ::env(QUIT_ON_SLEW_VIOLATIONS) 0
-set ::env(QUIT_ON_MAGIC_DRC) 0
-set ::env(QUIT_ON_TR_DRC) 0
 set ::env(QUIT_ON_LVS_ERROR) 0
-set ::env(QUIT_ON_NEGATIVE_WNS) 0
+set ::env(QUIT_ON_MAGIC_DRC) 0
 
 set ::env(ROUTING_CORES) 8
 
 set ::env(RT_MAX_LAYER) "met4"
 
-set ::env(RUN_KLAYOUT_DRC) 0
-set ::env(RUN_MAGIC_DRC) 0
+#set ::env(RUN_KLAYOUT_DRC) 0
+#set ::env(RUN_MAGIC_DRC) 0
 
 set ::env(SYNTH_TOP_LEVEL) 1
 set ::env(SYNTH_READ_BLACKBOX_LIB) 1

@@ -22,6 +22,7 @@
     `default_nettype wire
     `include "gl/user_project_wrapper.v"
     `include "gl/user_proj.v"
+    `include "../../../openlane/user_project_wrapper/src/sky130_sram_2kbyte_1rw1r_32x512_8.v"
 `else
     `include "../../../openlane/user_project_wrapper/src/user_project_wrapper.v"
     `include "../../../openlane/user_project_wrapper/src/sky130_sram_2kbyte_1rw1r_32x512_8.v"

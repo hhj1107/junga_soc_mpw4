@@ -14,23 +14,35 @@
 # limitations under the License.
 # SPDX-License-Identifier: Apache-2.0
 
-export UPRJ_ROOT=$(pwd)
+export RUN_ROOT=$(pwd)
 export CARAVEL_ROOT=$(pwd)/caravel
-cd ..
+
+cd $RUN_ROOT/..
+echo $PWD
+export OPENLANE_ROOT=$(pwd)/openlane
 export PDK_ROOT=$(pwd)/pdks
-export IMAGE_NAME=efabless/openlane:$OPENLANE_TAG
+export INSTALL_SRAM=enable
 
-cd $UPRJ_ROOT
+rm -rf $OPENLANE_ROOT $PDK_ROOT $CARAVEL_ROOT
 
-LOG_FILE=out.log
-docker run -v $UPRJ_ROOT:$UPRJ_ROOT -v $PDK_ROOT:$PDK_ROOT -v $CARAVEL_ROOT:$CARAVEL_ROOT -e UPRJ_ROOT=$UPRJ_ROOT -e PDK_ROOT=$PDK_ROOT -e CARAVEL_ROOT=$CARAVEL_ROOT -u $(id -u $USER):$(id -g $USER) $IMAGE_NAME bash -c "cd $UPRJ_ROOT; export USER_ID=$USER_ID; make xor-wrapper | tee $LOG_FILE;"
+cd $RUN_ROOT
+echo $PWD
+make install
 
-cnt=$(grep -oP '(?<=Total XOR differences = )[0-9]+' $LOG_FILE)
+cd $CARAVEL_ROOT
+echo $PWD
+git checkout $CARAVEL_TAG
 
-echo "Total XOR differences = $cnt"
+cd $RUN_ROOT
+echo $PWD
+make openlane
 
-if [[ $cnt -ne 0 ]]; then 
-    exit 2; 
-fi
+#cd $OPENLANE_ROOT
+#echo $PWD
+#git checkout $OPENLANE_TAG
+make pdk
 
+echo "done installing"
+
+cd $RUN_ROOT
 exit 0

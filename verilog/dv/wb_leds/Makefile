@@ -13,6 +13,8 @@
 # limitations under the License.
 #
 # SPDX-License-Identifier: Apache-2.0
+## PDK 
+PDK_PATH = $(PDK_ROOT)/sky130A
 
 ## Caravel Pointers
 CARAVEL_ROOT ?= ../../../caravel
@@ -28,10 +30,8 @@ UPRJ_RTL_PATH = $(UPRJ_VERILOG_PATH)/rtl
 UPRJ_BEHAVIOURAL_MODELS = ../
 
 ## RISCV GCC 
-PDK_ROOT?=/local/home/roman/projects/opencircuitdesign/shuttle4/pdks
-GCC_PATH?=/opt/xpack-riscv-none-embed-gcc/bin
-GCC_PREFIX?=riscv-none-embed
-PDK_PATH?=$(PDK_ROOT)/sky130A
+GCC_PATH?=/usr/bin
+GCC_PREFIX?=riscv64-unknown-elf
 
 ## Simulation mode: RTL/GL
 SIM?=RTL

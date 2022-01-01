@@ -44,12 +44,12 @@ set ::env(VERILOG_INCLUDE_DIRS) [glob $script_dir/src]
 set ::env(CLOCK_PORT) "wb_clk_i"
 set ::env(CLOCK_PERIOD) 10
 
-set ::env(DIE_AREA) "0 0 900 900"
+set ::env(DIE_AREA) "0 0 1000 1000"
 
 set ::env(DIODE_INSERTION_STRATEGY) 4 
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
-set ::env(FP_CORE_UTIL) 35
+set ::env(FP_CORE_UTIL) 30
 set ::env(FP_PDN_CORE_RING) 0
 set ::env(FP_PDN_IRDROP) 0
 
@@ -62,6 +62,7 @@ set ::env(GND_NETS) [list {vssd1}]
 
 set ::env(PL_TARGET_DENSITY) [ expr ($::env(FP_CORE_UTIL)+5) / 100.0 ]
 set ::env(PL_TIME_DRIVEN) 1
+
 set ::env(QUIT_ON_HOLD_VIOLATIONS) 0
 set ::env(QUIT_ON_TIMING_VIOLATIONS) 0
 set ::env(QUIT_ON_SLEW_VIOLATIONS) 0

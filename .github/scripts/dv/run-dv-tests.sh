@@ -24,38 +24,33 @@ DV_TEST_IDS=(${IDS//,/ })
 export TARGET_PATH=$(pwd)
 export CARAVEL_ROOT=$(pwd)/caravel
 
+cd ..
+export PDK_ROOT=$(pwd)/pdks
+DV_PATH=$TARGET_PATH/verilog/dv
+
 if [ ! -d $TARGET_PATH ] 
 then
-    echo "Directory target /path/to/dir DOES NOT exists." 
-    exit 9999 
+    echo "Directory target [$TARGET_PATH] DOES NOT exists." 
+    exit 3 
 fi
 
-cd ..
-
-export PDK_ROOT=$(pwd)/pdks
 if [ ! -d $PDK_ROOT ] 
 then
-    echo "Directory pdk /path/to/dir DOES NOT exists." 
-    exit 9999 
+    echo "Directory pdk [$PDK_ROOT] DOES NOT exists." 
+    exit 3 
 fi
 
-DV_PATH=$TARGET_PATH/verilog/dv
 if [ ! -d $DV_PATH ] 
 then
-    echo "Directory /path/to/dir DOES NOT exists." 
-    exit 9999
+    echo "Directory dv [$DV_PATH] DOES NOT exists." 
+    exit 3
 fi
 
 for id in "${DV_TEST_IDS[@]}"
-do 
-    docker run -v $TARGET_PATH:$TARGET_PATH -v $PDK_ROOT:$PDK_ROOT \
-                -v $CARAVEL_ROOT:$CARAVEL_ROOT \
-                -e TARGET_PATH=$TARGET_PATH -e PDK_ROOT=$PDK_ROOT \
-                -e CARAVEL_ROOT=$CARAVEL_ROOT \
-                -u $(id -u $USER):$(id -g $USER) efabless/dv_setup:latest \
-                bash -c "bash $TARGET_PATH/.github/scripts/dv/run-dv.sh $PDK_ROOT $DV_PATH $id $SIM_MODE"
+do
+    $TARGET_PATH/.github/scripts/dv/run-dv.sh $PDK_ROOT $DV_PATH $id $SIM_MODE
 
-    echo "DONE!"
+    echo "Done test $id $SIM_MODE"
 
     VERDICT_FILE=$TARGET_PATH/verilog/dv/$id.out
 
@@ -70,7 +65,7 @@ do
     echo "Verdict: $cnt"
 
     if [[ $cnt -ne 1 ]]; then 
-        exit 2; 
+        exit 1; 
     fi
 done
 

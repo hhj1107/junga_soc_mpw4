@@ -1,73 +1,52 @@
-name: Caravel Build
-
-
+name: CD
 on:
-    # Runs on Every Push
     push:
-    # Runs on Pull Requests
     pull_request:
     workflow_dispatch:
-
+    workflow_call:
 jobs:
-  make_ship:
+  build:
     runs-on: ubuntu-latest
+    env:
+      PDK_ROOT:            /home/runner/work/caravel_mpw4/pdks
+      OPENLANE_ROOT:       /home/runner/work/caravel_mpw4/openlane
+      CARAVEL_ROOT:        /home/runner/work/caravel_mpw4/caravel_mpw4/caravel
+      OPENLANE_IMAGE_NAME: efabless/openlane:mpw-3a
+      OPENLANE_TAG:        2021.12.17_05.07.41
+      CARAVEL_TAG:         mpw-3a
+      MAGIC_VERSION:       8.3.209
     steps:
        - uses: actions/checkout@v2
-      
-       - name: Set up QEMU
-         uses: docker/setup-qemu-action@v1
-
-       - name: Set up Docker Buildx
-         uses: docker/setup-buildx-action@v1
-        
-       - name: Install The PDK
-         run:  bash ${GITHUB_WORKSPACE}/.github/scripts/dv/pdkBuild.sh
-         env: 
-          OPENLANE_TAG:  2021.12.17_05.07.41
-
-       - name: Run make ship
-         run: bash ${GITHUB_WORKSPACE}/.github/scripts/build/run-ship.sh 
-         env: 
-          OPENLANE_TAG:  2021.12.17_05.07.41
-          
-  set_user_id:
-    runs-on: ubuntu-latest
-    steps:
-       - uses: actions/checkout@v2
-      
-       - name: Set up QEMU
-         uses: docker/setup-qemu-action@v1
-
-       - name: Set up Docker Buildx
-         uses: docker/setup-buildx-action@v1
-        
-       - name: Install The PDK
-         run:  bash ${GITHUB_WORKSPACE}/.github/scripts/dv/pdkBuild.sh
-         env: 
-          OPENLANE_TAG:  2021.09.16_03.28.21
-
-       - name: Run Set User ID
-         run: bash ${GITHUB_WORKSPACE}/.github/scripts/build/run-set-id.sh 
-         env: 
-          OPENLANE_TAG:  2021.09.16_03.28.21
-
-  xor_wrapper:
-    runs-on: ubuntu-latest
-    steps:
-       - uses: actions/checkout@v2
-      
-       - name: Set up QEMU
-         uses: docker/setup-qemu-action@v1
-
-       - name: Set up Docker Buildx
-         uses: docker/setup-buildx-action@v1
-        
-       - name: Install The PDK
-         run:  bash ${GITHUB_WORKSPACE}/.github/scripts/dv/pdkBuild.sh
-         env: 
-          OPENLANE_TAG: 2021.09.16_03.28.21
-
-       - name: Run XOR Check
-         run: bash ${GITHUB_WORKSPACE}/.github/scripts/build/run-xor.sh 
-         env: 
-          OPENLANE_TAG:  2021.09.16_03.28.21
+       - name: debug
+         run:  |
+           echo ${{ github.event_name }}
+       - name: install deps
+         run:  bash .github/scripts/build/run-install-magic.sh
+       - name: install caravel
+         run:  bash .github/scripts/build/run-pdk-build.sh
+       - name: uncompress
+         run:  make uncompress
+       - name: build user gds
+         run: |
+           bash .github/scripts/build/build-user.sh \
+           || bash .github/scripts/build/build-user.sh \
+           || bash .github/scripts/build/build-user.sh \
+           || bash .github/scripts/build/build-user.sh \
+           bash .github/scripts/build/build-user.sh
+       - name: build wrapper gds
+         run: |
+           bash .github/scripts/build/build-wrapper.sh \
+           || bash .github/scripts/build/build-wrapper.sh \
+           || bash .github/scripts/build/build-wrapper.sh \
+           || bash .github/scripts/build/build-wrapper.sh \
+           || bash .github/scripts/build/build-wrapper.sh
+       - name: compress
+         run:  make compress
+       - name: push
+         #if: github.event_name == 'workflow_dispatch'
+         run: |
+           git add def gds lef mag maglef signoff verilog
+           git config user.email "rbacik@hotmail.com"
+           git config user.name "roman3017"
+           git commit -m "tag action: update build"
+           git push origin HEAD:main
